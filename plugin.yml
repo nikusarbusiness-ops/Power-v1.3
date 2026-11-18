@@ -1,0 +1,90 @@
+name: PowerBat
+version: ${project.version}
+main: de.powerbat.PowerBat
+api-version: '1.21'
+description: Advanced Combat and Clan Plugin
+authors: [PowerBat]
+softdepend: [LuckPerms]
+
+commands:
+  clan:
+    description: Clan-System (öffnet das Clan-Menü)
+    usage: /clan [help]
+    aliases: [clans]
+  friend:
+    description: Freundesliste
+    usage: /friend <add|accept|deny|remove|list|msg|reply>
+    aliases: [friends, freunde, fr]
+  powerbat:
+    description: PowerBat Administration
+    usage: /powerbat <reload|version|info|combat|endcombat|clan>
+    aliases: [pb]
+
+permissions:
+  powerbat.admin:
+    description: Voller Zugriff auf alle PowerBat-Adminfunktionen
+    default: op
+    children:
+      powerbat.reload: true
+      powerbat.clan.admin: true
+      powerbat.clan.use: true
+      powerbat.chat.color: true
+      powerbat.clan.color: true
+      powerbat.clan.bold: true
+      powerbat.clan.italic: true
+      powerbat.clan.format: true
+      powerbat.friend.use: true
+  powerbat.friend.use:
+    description: /friend benutzen
+    default: true
+  powerbat.clan.color:
+    description: Clan-Farbe und farbige Tags/Beschreibungen setzen
+    default: false
+  powerbat.clan.bold:
+    description: Fettschrift (&l) in Clan-Tag/Beschreibung
+    default: false
+  powerbat.clan.italic:
+    description: Kursivschrift (&o) in Clan-Tag/Beschreibung
+    default: false
+  powerbat.clan.format:
+    description: Unterstrichen, durchgestrichen, magisch (&n &m &k)
+    default: false
+  powerbat.reload:
+    description: /powerbat reload
+    default: op
+  powerbat.clan.admin:
+    description: Clans anderer Spieler verwalten
+    default: op
+  powerbat.clan.use:
+    description: /clan benutzen (Beitreten, Chat, Menü)
+    default: true
+  powerbat.combat.bypass:
+    description: Wird nie in Combat versetzt und stirbt nicht beim Logout
+    default: false
+  powerbat.chat.color:
+    description: Farbcodes (&) in Chatnachrichten verwenden
+    default: false
+  powerbat.clan.create.default:
+    description: Clan erstellen (Standard-Rang) - nur wirksam, wenn in config.yml eingetragen
+    default: false
+  powerbat.clan.create.premium:
+    description: Clan erstellen (Premium)
+    default: false
+  powerbat.clan.create.moderator:
+    description: Clan erstellen (Moderator)
+    default: false
+  powerbat.clan.create.admin:
+    description: Clan erstellen (Admin)
+    default: false
+  powerbat.clan.create.owner:
+    description: Clan erstellen (Owner)
+    default: false
+  powerbat.clan.create.*:
+    description: Alle Clan-Erstellungs-Permissions
+    default: false
+    children:
+      powerbat.clan.create.default: true
+      powerbat.clan.create.premium: true
+      powerbat.clan.create.moderator: true
+      powerbat.clan.create.admin: true
+      powerbat.clan.create.owner: true

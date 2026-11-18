@@ -1,0 +1,128 @@
+# ============================================================
+#  PowerBat - config.yml
+#  Farbcodes mit & (auch Hex: &#RRGGBB)
+# ============================================================
+
+combat:
+  # Dauer des Combat-Tags in Sekunden (wird bei jedem Treffer zurückgesetzt)
+  duration-seconds: 20
+  # Verbleibende Zeit in der Actionbar anzeigen
+  show-actionbar: true
+  # Spieler, die im Combat ausloggen, sterben automatisch
+  kill-on-logout: true
+  # Der Gegner verliert den Combat-Status, wenn er den letzten Gegner getötet hat
+  untag-killer-on-kill: true
+  # Spieler im Creative/Spectator werden nicht in Combat versetzt
+  ignore-creative: true
+  # Befehle im Combat sperren
+  block-commands: true
+  blocked-commands:
+    - spawn
+    - home
+    - homes
+    - tpa
+    - tpahere
+    - tpaccept
+    - warp
+    - back
+    - rtp
+    - ec
+    - enderchest
+
+clan:
+  # Wenn true, braucht man eine der Permissions/Gruppen unten, um einen Clan zu erstellen.
+  create-requires-permission: true
+  # Permissions, die zum Erstellen eines Clans berechtigen (LuckPerms-Nodes).
+  # Tipp: "powerbat.clan.create.default" hier eintragen, damit ALLE Spieler (mit dieser Perm) erstellen dürfen.
+  create-permissions:
+    - powerbat.clan.create.premium
+    - powerbat.clan.create.moderator
+    - powerbat.clan.create.admin
+    - powerbat.clan.create.owner
+    - powerbat.clan.admin
+  # LuckPerms-Gruppen (inkl. Vererbung), die einen Clan erstellen dürfen. Leer lassen, um nur Permissions zu nutzen.
+  create-groups:
+    - premium
+    - moderator
+    - admin
+    - owner
+
+  name-min-length: 3
+  name-max-length: 16
+  # Erlaubte Zeichen im Clan-Namen (Regex)
+  name-pattern: "[A-Za-z0-9_-]+"
+  # Verbotene Clan-Namen (Groß-/Kleinschreibung egal)
+  blocked-names:
+    - admin
+    - staff
+    - owner
+    - moderator
+    - powerbat
+
+  # Clan-Tag (Länge OHNE Farbcodes)
+  tag-min-length: 2
+  tag-max-length: 6
+  allow-tag-colors: true
+
+  default-color: "&7"
+  max-members: 20
+  max-description-length: 60
+  invite-expire-seconds: 60
+  # Standard für neue Clans: PvP zwischen Clan-Mitgliedern (pro Clan mit /clan pvp umschaltbar)
+  default-pvp: false
+  broadcast-create: true
+
+  # Darstellung. %color% = Clan-Farbe, %tag% = Tag-Text, %name% = Clan-Name
+  # Enthält das Tag selbst &-Codes, wird es unverändert verwendet (z.B. "&6&lPOWER &8|").
+  # Fett/Kursiv/Farben setzt man nur mit speziellem Rang (powerbat.clan.color/.bold/.italic/.format)
+  tag-format: "&8[%color%%tag%&8]"
+  name-format: "%color%%name%"
+
+  # Berechtigungen der Clan-Ränge. Mögliche Werte:
+  # INVITE, KICK, PROMOTE, DEMOTE, EDIT_SETTINGS, MANAGE_INVITES, CLAN_CHAT, DISBAND, TRANSFER, ALL
+  # (DISBAND und TRANSFER sind immer nur für den Leader)
+  rank-permissions:
+    LEADER:
+      - ALL
+    CO_LEADER:
+      - INVITE
+      - KICK
+      - PROMOTE
+      - DEMOTE
+      - EDIT_SETTINGS
+      - MANAGE_INVITES
+      - CLAN_CHAT
+    MODERATOR:
+      - INVITE
+      - CLAN_CHAT
+    MEMBER:
+      - CLAN_CHAT
+
+chat:
+  # false = PowerBat verändert das Chatformat nicht (z.B. wenn ein anderes Chat-Plugin es verwaltet)
+  manage-format: true
+  # Platzhalter: {prefix} = LuckPerms-Prefix, {clan} = Clan-Tag (inkl. Leerzeichen), {name}, {message}
+  format: "{prefix}{clan}{name}&8: &f{message}"
+  # Clan-Chat. Platzhalter: %clancolor% %clanname% %clantag% %rank% %player% %message%
+  clan-format: "&8[%clancolor%%clanname%&8] &6[%rank%&6] &f%player%&8: &f%message%"
+
+nametag:
+  # Clan-Tag über dem Kopf (Scoreboard-Teams). Auf false setzen, falls ein anderes Plugin Nametags verwaltet.
+  enabled: true
+  format: "{clan}"
+
+friends:
+  max-friends: 50
+  request-expire-seconds: 300
+  # Meldung, wenn ein Freund joint/leavt
+  notifications: true
+
+tablist:
+  enabled: true
+  format: "{prefix}{clan}{name}"
+
+storage:
+  # Automatisches Speichern (Sekunden)
+  autosave-seconds: 120
+
+date-format: "dd.MM.yyyy HH:mm"
